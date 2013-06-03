@@ -20,3 +20,6 @@ class Trashable(models.Model):
 
 	def restore(self):
 		self.deleted_at = None
+	
+	class Meta:
+		abstract = True
