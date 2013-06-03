@@ -1,9 +1,10 @@
 django-undelete
 ================
 
-UnDelete is a simple project that gives you access to a TrashableMixin meta model and some useful managers as well.
+UnDelete is a simple project that gives you access to a Trashable meta model and some useful managers as well.
 
-Much of the work is heavily derivative of Simon Willison's [post on the same topic](http://ltslashgt.com/2007/07/18/undelete-in-django/).
+Much of the work is heavily derivative of Simon Willison's [post on the same topic](http://ltslashgt.com/2007/07/18/undelete-in-django/), Colin Powell (https://github.com/powellc/django-undelete)‎
+
 
 Installation
 -------------
@@ -11,7 +12,8 @@ Installation
 In three easy steps!
 
 1. Place 'undelete' in your installed apps.
-2. Add:
+2.1 Add undelete to INSTALLED_APP in settings.py
+2.2 Add:
 
         from undelete.models import Trashable
 
@@ -57,4 +59,3 @@ With the steps above taken, managing trashed items is fairly straightforward:
     >>> obj = YourModel.objects.get(pk=1)
     >>> obj.delete(really=True)
 
-Future plans also call for a management command to delete everything trashed a certain period of time ago. Stay tuned!
