@@ -13,11 +13,11 @@ In three easy steps!
 1. Place 'undelete' in your installed apps.
 2. Add:
 
-        from undelete.models import TrashableMixin
+        from undelete.models import Trashable
 
 3. Make sure your model inherits the mixin: 
 
-        class YourMode(TrashabeMixin): ...`   
+        class YourMode(Trashabe, models.Model): ...`   
 
 And you're done. You should now be able to query trashed items with the "trash" manager and non-trashed items with the usual objects manager.
 
@@ -32,6 +32,11 @@ With the steps above taken, managing trashed items is fairly straightforward:
     10
     >>> YourModel.trash.count()
     0
+    >>> YourModel.objects.all().delete()
+    >>> YourModel.objects.count()
+    0
+    >>> YourModel.trash.count()
+    10
     >>> obj = YourModel.objects.get(pk=1)
     >>> obj
     < YourModel: u'Test object' >
@@ -50,6 +55,6 @@ With the steps above taken, managing trashed items is fairly straightforward:
     >>> obj.delete()
     # You can also skip the trash entierely
     >>> obj = YourModel.objects.get(pk=1)
-    >>> obj.delete(trash=False)
+    >>> obj.delete(really=True)
 
 Future plans also call for a management command to delete everything trashed a certain period of time ago. Stay tuned!
