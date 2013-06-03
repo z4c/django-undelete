@@ -9,11 +9,11 @@ Much of the work is heavily derivative of Simon Willison's [post on the same top
 Installation
 -------------
 
-In three easy steps!
+In 4 easy steps!
 
 1. Place 'undelete' in your installed apps.
-2.1 Add undelete to INSTALLED_APP in settings.py
-2.2 Add:
+2. Add 'undelete' to INSTALLED_APP in settings.py
+3. Add
 
         from undelete.models import Trashable
 
