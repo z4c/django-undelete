@@ -12,11 +12,11 @@ class Trashable(models.Model):
 	trash = TrashedManager()
 
 	def delete(self, *args, **kwargs, really=False):
-	    if not really:
-	        self.deleted_at = datetime.now()
-	        self.save()
-	    else:
-		super(TrashableMixin, self).delete(*args, **kwargs)
+		if deleted_at or really:
+			super(Trashable, self).delete(*args, *kwargs)
+		else:
+			self.deleted_at = datetime.now()
+			self.save()
 
 	def restore(self):
 		self.deleted_at = None
